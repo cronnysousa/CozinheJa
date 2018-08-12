@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".ui.PrincipalActivity"
+
+
+    >
+
+    <ScrollView android:layout_height="match_parent"
+
+        android:layout_width="match_parent">
+        <TableLayout
+            android:stretchColumns="0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            >
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_marginEnd="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginStart="0dp"
+                android:hint="@string/pesquisar_ingrediente" />
+
+            <Button
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+
+                android:text="@string/rot_bt_pesquisa" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <ListView
+
+                android:id="@+id/lstItens"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
+
+                ></ListView>
+        </TableRow>
+
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtItensSelecionados"
+                android:layout_width="match_parent"
+                android:text="@string/meus_ingredientes" />
+        </TableRow>
+
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ListView
+
+                android:id="@+id/lstItensSelecionados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
+
+                ></ListView>
+        </TableRow>
+            <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/txtReceitas"
+                    android:layout_width="match_parent"
+                    android:text="@string/txt_receitas" />
+            </TableRow>
+            <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ListView
+
+                android:id="@+id/lstReceitasSelecionadas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
+
+                ></ListView>
+            </TableRow>
+
+        </TableLayout>
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

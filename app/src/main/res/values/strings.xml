@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CozinheJa</string>
+    <string name="rot_pesquisa">Pesquisar</string>
+    <string name="rot_bt_pesquisa">Pesquisar</string>
+    <string name="pesquisar_ingrediente">Pesquisar ingrediente</string>
+    <string name="meus_ingredientes">Meus Ingredientes</string>
+    <string name="txt_receitas">Receitas para Já</string>
+</resources>
