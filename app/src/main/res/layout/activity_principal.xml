@@ -51,7 +51,7 @@
 
             <ListView
 
-                android:id="@+id/lstItens"
+                android:id="@+id/lstIngredientes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_span="2"
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/txtItensSelecionados"
+                android:id="@+id/txtIngredientesSelecionados"
                 android:layout_width="match_parent"
                 android:text="@string/meus_ingredientes" />
         </TableRow>
@@ -73,7 +73,7 @@
 
             <ListView
 
-                android:id="@+id/lstItensSelecionados"
+                android:id="@+id/lstIngredientesSelecionados"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_span="2"
