@@ -3,7 +3,7 @@ package com.sousa.ronny.cozinheja.model;
 import java.util.ArrayList;
 
 public class Receita {
-    private ArrayList<ItensReceita> ingredientes;
+    private ArrayList<ItensReceita> itensReceitas;
     private String preparo;
     private String url;
     private String foto;
@@ -12,7 +12,7 @@ public class Receita {
     public boolean ContemIngrediente(Ingrediente item)
     {
         boolean resp = false;
-        for (ItensReceita a: getIngredientes()) {
+        for (ItensReceita a: getItensReceitas()) {
             if(a.getIngrediente().getNome() == item.getNome())
             {
                 resp= true;
@@ -24,7 +24,7 @@ public class Receita {
     public boolean ContemTodosIngredientes(ArrayList<Ingrediente> lista)
     {
         boolean respfin=true;
-        for (ItensReceita a: getIngredientes()) {
+        for (ItensReceita a: getItensReceitas()) {
             boolean resp = false;
             for (Ingrediente b:lista) {
                 if(a.getIngrediente().getNome() == b.getNome())
@@ -45,12 +45,12 @@ public class Receita {
         return getNome().toString();
     }
 
-    public ArrayList<ItensReceita> getIngredientes() {
-        return ingredientes;
+    public ArrayList<ItensReceita> getItensReceitas() {
+        return itensReceitas;
     }
 
-    public void setIngredientes(ArrayList<ItensReceita> ingredientes) {
-        this.ingredientes = ingredientes;
+    public void setItensReceitas(ArrayList<ItensReceita> itensReceitas) {
+        this.itensReceitas = itensReceitas;
     }
 
     public String getPreparo() {
