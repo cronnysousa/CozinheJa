@@ -1,40 +1,81 @@
 package com.sousa.ronny.cozinheja.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Receita {
-    private ArrayList<ItensReceita> itensReceitas;
+    private ArrayList<ItensReceita> itensReceita;
     private String preparo;
     private String url;
     private String foto;
     private String nome;
+    private String id;
 
-    public boolean ContemIngrediente(Ingrediente item)
-    {
+    public boolean ContemIngrediente(Ingrediente item) {
         boolean resp = false;
-        for (ItensReceita a: getItensReceitas()) {
-            if(a.getIngrediente().getNome() == item.getNome())
-            {
-                resp= true;
+        for (ItensReceita a : getItensReceita()) {
+            if (a.getIngrediente().getNome() == item.getNome()) {
+                resp = true;
             }
         }
         return resp;
     }
 
-    public boolean ContemTodosIngredientes(ArrayList<Ingrediente> lista)
-    {
-        boolean respfin=true;
-        for (ItensReceita a: getItensReceitas()) {
+    public boolean ContemAlgunsIngredientes(List<Ingrediente> lista) {
+        boolean respfin = false;
+        for (ItensReceita a : getItensReceita()) {
             boolean resp = false;
-            for (Ingrediente b:lista) {
-                if(a.getIngrediente().getNome() == b.getNome())
-                {
-                    resp=true;
+            for (Ingrediente b : lista) {
+                if (a.getIngrediente().getNome().equals(b.getNome())) {
+                    resp = true;
                 }
             }
-            if(!resp)
-            {
-                respfin=false;
+            if (resp) {
+                return true;
+            }
+        }
+        return respfin;
+
+    }
+
+    public int ContemQuantosIngredientes(List<Ingrediente> lista) {
+        int qt = 0;
+        for (ItensReceita a : getItensReceita()) {
+            boolean resp = false;
+            for (Ingrediente b : lista) {
+                if (a.getIngrediente().getNome().equals(b.getNome())) {
+                    resp = true;
+                    break;
+                }
+            }
+            if (resp) {
+                qt++;
+            }
+        }
+        return qt;
+
+    }
+
+    public double PercencentualIngredientes(List<Ingrediente> lista) {
+        double qt = getItensReceita().size();
+        double ct = ContemQuantosIngredientes(lista);
+        double pc = qt / ct;
+        return qt;
+
+    }
+
+
+    public boolean ContemTodosIngredientes(List<Ingrediente> lista) {
+        boolean respfin = true;
+        for (ItensReceita a : getItensReceita()) {
+            boolean resp = false;
+            for (Ingrediente b : lista) {
+                if (a.getIngrediente().getNome().equals(b.getNome())) {
+                    resp = true;
+                }
+            }
+            if (!resp) {
+                respfin = false;
             }
         }
         return respfin;
@@ -45,12 +86,12 @@ public class Receita {
         return getNome().toString();
     }
 
-    public ArrayList<ItensReceita> getItensReceitas() {
-        return itensReceitas;
+    public ArrayList<ItensReceita> getItensReceita() {
+        return itensReceita;
     }
 
-    public void setItensReceitas(ArrayList<ItensReceita> itensReceitas) {
-        this.itensReceitas = itensReceitas;
+    public void setItensReceita(ArrayList<ItensReceita> itensReceita) {
+        this.itensReceita = itensReceita;
     }
 
     public String getPreparo() {
@@ -83,5 +124,13 @@ public class Receita {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
