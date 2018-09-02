@@ -13,6 +13,9 @@ public class RetrofitInicializador {
         retrofit= new Retrofit.Builder()
                 .baseUrl("http://www.programacaoronny.kinghost.net/api/")
                 .addConverterFactory(JacksonConverterFactory.create()).build();
+        JacksonConverterFactory factory= JacksonConverterFactory.create();
+
+
     }
 
     public IngredienteService getIngredienteService()

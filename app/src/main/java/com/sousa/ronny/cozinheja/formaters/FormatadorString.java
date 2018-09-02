@@ -1,4 +1,4 @@
-package com.sousa.ronny.cozinheja.Formaters;
+package com.sousa.ronny.cozinheja.formaters;
 
 import java.text.Normalizer;
 import java.util.regex.Pattern;

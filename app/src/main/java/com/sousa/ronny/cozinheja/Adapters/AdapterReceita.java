@@ -1,4 +1,4 @@
-package com.sousa.ronny.cozinheja.Adapters;
+package com.sousa.ronny.cozinheja.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -53,7 +53,7 @@ public class AdapterReceita extends BaseAdapter {
         double percentual=listaReceitas.get(position).PercencentualIngredientes(listaIngredientes) * 100;
 
         progressBar.setProgress((int) percentual);
-        per.setText( String.valueOf (percentual));
+        per.setText(String.format("%1.2f%%",percentual) );
 
         nome.setText(listaReceitas.get(position).getNome());
         return view;

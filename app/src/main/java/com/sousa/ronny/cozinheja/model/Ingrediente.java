@@ -1,6 +1,8 @@
 package com.sousa.ronny.cozinheja.model;
 
-public class Ingrediente {
+import java.io.Serializable;
+
+public class Ingrediente implements Serializable     {
     private String id;
     private String nome;
 

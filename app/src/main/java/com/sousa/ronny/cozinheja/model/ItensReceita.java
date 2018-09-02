@@ -1,6 +1,11 @@
 package com.sousa.ronny.cozinheja.model;
 
-public class ItensReceita {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.io.Serializable;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class ItensReceita implements Serializable {
     private String id;
     private Ingrediente ingrediente;
     private int qt;

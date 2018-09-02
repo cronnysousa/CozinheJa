@@ -1,9 +1,10 @@
 package com.sousa.ronny.cozinheja.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Receita {
+public class Receita implements Serializable {
     private ArrayList<ItensReceita> itensReceita;
     private String preparo;
     private String url;
@@ -59,8 +60,8 @@ public class Receita {
     public double PercencentualIngredientes(List<Ingrediente> lista) {
         double qt = getItensReceita().size();
         double ct = ContemQuantosIngredientes(lista);
-        double pc = qt / ct;
-        return qt;
+        double pc =  ct/qt ;
+        return pc;
 
     }
 
