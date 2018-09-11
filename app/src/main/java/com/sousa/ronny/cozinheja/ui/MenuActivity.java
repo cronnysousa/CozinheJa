@@ -85,11 +85,14 @@ public class MenuActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_receita) {
             FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction transacao = manager.beginTransaction();
+            transacao.replace(R.id.conteudo, new PrincipalActivity());
+            transacao.commit();
+
+        } else if (id == R.id.nav_gallery) {
+
 
 
 

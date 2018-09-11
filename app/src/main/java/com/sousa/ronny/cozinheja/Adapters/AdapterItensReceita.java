@@ -61,12 +61,24 @@ public class AdapterItensReceita extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater= ((Activity) context).getLayoutInflater();
-        View view= inflater.inflate(R.layout.itensreceita_item_layout,parent,false);
-        TextView nome= view.findViewById(R.id.txtNomeItensReceita);
+        LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+        View view = inflater.inflate(R.layout.itensreceita_item_layout, parent, false);
+        TextView nome = view.findViewById(R.id.txtNomeItensReceita);
         nome.setText(listaItensReceitas.get(position).getIngrediente().getNome());
-        TextView qt= view.findViewById(R.id.txtQtItensReceita);
-        qt.setText(String.valueOf( listaItensReceitas.get(position).getQt()));
+        TextView qt = view.findViewById(R.id.txtQtItensReceita);
+        if (listaItensReceitas.get(position).getQt() == 0) {
+            if(listaItensReceitas.get(position).getFracao()!=null) {
+                qt.setText(String.valueOf(listaItensReceitas.get(position).getFracao()));
+            }
+        } else {
+            if(listaItensReceitas.get(position).getFracao()!=null) {
+                qt.setText(String.format("%1$d e %2$s",listaItensReceitas.get(position).getQt(),listaItensReceitas.get(position).getFracao()));
+            }
+            else
+            {
+                qt.setText(String.format("%0$d",listaItensReceitas.get(position).getQt()));
+            }
+        }
         TextView unidade= view.findViewById(R.id.txtUnidadeItensReceita);
         unidade.setText(listaItensReceitas.get(position).getUnidade());
 

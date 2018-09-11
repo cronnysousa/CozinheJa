@@ -2,41 +2,137 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:weightSum="100"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
     tools:context=".ui.ReceitaActivity">
-
-    <ImageView
-        android:id="@+id/imgReceita"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_weight="20"
-        android:scaleType="fitXY"
+        android:layout_height="0dp"
+        android:layout_weight="30"
+        >
+        <ImageView
+            android:id="@+id/imgReceita"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
 
 
-        />
+            />
 
-    <TextView
-        android:id="@+id/txtNome"
+        <TextView
+            android:id="@+id/txtNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:shadowColor="#FFFFFFFF"
+            android:shadowDx="-4"
+            android:shadowDy="4"
+            android:shadowRadius="3"
+            android:layout_alignBottom="@id/imgReceita"
+
+            android:textStyle="italic|bold" />
+    </RelativeLayout>
+
+
+
+
+    <ScrollView
+        android:id="@+id/scrollReceita"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="35"
+        android:layout_margin="5dp"
+        android:background="@color/colorPrimary"
+        >
+
+        <TextView
+            android:id="@+id/txtPreparo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="#FFFFFF"
+            android:overScrollMode="always"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbars="vertical"
+            android:textAlignment="textStart"
+            android:textSize="20dp" />
+    </ScrollView>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/linhaIngrediente"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@drawable/fundo_linhaclara"
+        android:layout_gravity="center"
+        android:layout_weight="7"
+        android:weightSum="100"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp">
 
-    <TextView
-        android:id="@+id/txtPreparo"
-        android:lines="10"
-        android:layout_weight="20"
-        android:scrollbars="vertical"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/txtQtItensReceita"
+            android:layout_weight="25"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:textSize="@dimen/tamanhoTextoMedio"
+
+            android:textAlignment="center"
+            android:padding="5sp"
+           android:text="Qt"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:id="@+id/txtUnidadeItensReceita"
+            android:layout_weight="35"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:textAlignment="center"
+            android:padding="5sp"
+            android:textSize="@dimen/tamanhoTextoMedio"
+            android:layout_height="wrap_content"
+            android:text="Medida"
+            />
+        <TextView
+            android:id="@+id/txtNomeItensReceita"
+            android:layout_weight="30"
+            android:layout_width="0dp"
+            android:textAlignment="center"
+            android:padding="5sp"
+            android:textStyle="bold"
+            android:textSize="@dimen/tamanhoTextoMedio"
+            android:layout_height="wrap_content"
+            android:text="Ingrediente"
+            />
+        <ImageView
+            android:id="@+id/imgExpandir"
+            android:layout_weight="10"
+            android:layout_width="0dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="@dimen/tamanhoTextoMedio"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_expand_less_black_24dp"
+            />
+
+
+    </LinearLayout>
+
 
     <ListView
         android:id="@+id/lstItensReceita"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="40"
+        android:layout_weight="28"
+        android:layout_margin="10dp"
+
         />
+
 
 </LinearLayout>

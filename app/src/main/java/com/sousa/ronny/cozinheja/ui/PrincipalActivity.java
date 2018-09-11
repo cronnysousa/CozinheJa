@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -28,7 +31,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PrincipalActivity extends AppCompatActivity {
+public class PrincipalActivity extends Fragment {
     RetrofitInicializador retrofit;
 
 
@@ -45,11 +48,11 @@ public class PrincipalActivity extends AppCompatActivity {
     private ArrayList<Receita> listaReceitasCombinacao;
     private ArrayList<Ingrediente> listaIngredienteSelecionado;
 
-
+    @Nullable
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_principal);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        View view= inflater.inflate(R.layout.activity_principal, container, false);
         listaIngrediente = new ArrayList<>();
         listaIngredienteFiltrados = new ArrayList<Ingrediente>();
         listaIngredienteSelecionado = new ArrayList<Ingrediente>();
@@ -57,10 +60,10 @@ public class PrincipalActivity extends AppCompatActivity {
         listaReceitasCombinacao = new ArrayList<Receita>();
 
         //Preenche views
-        lstIngrediente = findViewById(R.id.lstIngredientes);
-        txtFiltroIngrediente = findViewById(R.id.txtFiltroIngrediente);
-        lstIngredientesSelecionados = findViewById(R.id.lstIngredientesSelecionados);
-        lstReceitasSelecionadas = findViewById(R.id.lstReceitasSelecionadas);
+        lstIngrediente = view.findViewById(R.id.lstIngredientes);
+        txtFiltroIngrediente = view.findViewById(R.id.txtFiltroIngrediente);
+        lstIngredientesSelecionados = view.findViewById(R.id.lstIngredientesSelecionados);
+        lstReceitasSelecionadas = view.findViewById(R.id.lstReceitasSelecionadas);
 
         //Definir Listeners
 
@@ -118,29 +121,31 @@ public class PrincipalActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Receita receita = (Receita) parent.getItemAtPosition(position);
-                Intent intent = new Intent(PrincipalActivity.this, ReceitaActivity.class);
+                Intent intent = new Intent(PrincipalActivity.this.getActivity(), ReceitaActivity.class);
                 intent.putExtra("receita", receita);
                 startActivity(intent);
             }
         });
 
         retrofit = new RetrofitInicializador();
+        return view;
+
 
     }
 
 
-    @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
 
-    }
+
+
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
+        if(listaIngrediente==null ||listaIngrediente.size()==0) {
 
-        preencheListaIngredienteRetrofit();
-        preencheListaReceitaRetrofit();
+            preencheListaIngredienteRetrofit();
+            preencheListaReceitaRetrofit();
+        }
     }
 
     private void verificaReceitas() {
@@ -176,14 +181,14 @@ public class PrincipalActivity extends AppCompatActivity {
 
 
     private void preencheListaReceita() {
-        AdapterReceita adapter = new AdapterReceita(this, listaReceitasCombinacao, listaIngredienteSelecionado);
+        AdapterReceita adapter = new AdapterReceita(PrincipalActivity.this.getActivity(), listaReceitasCombinacao, listaIngredienteSelecionado);
 
         lstReceitasSelecionadas.setAdapter(adapter);
     }
 
 
     private void preencheListaIngredientesSelecionados() {
-        AdapterIngrediente adapter = new AdapterIngrediente(this, listaIngredienteSelecionado);
+        AdapterIngrediente adapter = new AdapterIngrediente(PrincipalActivity.this.getActivity(), listaIngredienteSelecionado);
         lstIngredientesSelecionados.setAdapter(adapter);
 
 
@@ -241,7 +246,7 @@ public class PrincipalActivity extends AppCompatActivity {
             }
         }
 
-        AdapterIngrediente adapter = new AdapterIngrediente(PrincipalActivity.this, listaIngredienteFiltrados);
+        AdapterIngrediente adapter = new AdapterIngrediente(PrincipalActivity.this.getActivity(), listaIngredienteFiltrados);
         lstIngrediente.setAdapter(adapter);
 
 

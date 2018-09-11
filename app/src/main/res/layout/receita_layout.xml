@@ -8,6 +8,8 @@
         android:id="@+id/txtNomeReceita"
         android:layout_weight="0.60"
         android:textSize="18dp"
+        android:textAlignment="center"
+        android:padding="5sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content" />
 
@@ -15,6 +17,7 @@
 
     <TextView
         android:id="@+id/txtCompletoPercReceita"
+
         android:layout_weight="0.20"
         android:textSize="13dp"
         android:layout_width="0dp"

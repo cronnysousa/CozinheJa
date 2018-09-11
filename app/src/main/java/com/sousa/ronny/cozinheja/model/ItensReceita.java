@@ -8,7 +8,9 @@ import java.io.Serializable;
 public class ItensReceita implements Serializable {
     private String id;
     private Ingrediente ingrediente;
-    private int qt;
+
+    private   int qt;
+    private  String fracao;
     private String unidade;
 
     public String getId() {
@@ -41,5 +43,13 @@ public class ItensReceita implements Serializable {
 
     public void setUnidade(String unidade) {
         this.unidade = unidade;
+    }
+
+    public String getFracao() {
+        return fracao;
+    }
+
+    public void setFracao(String fracao) {
+        this.fracao = fracao;
     }
 }
